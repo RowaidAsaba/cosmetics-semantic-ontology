@@ -1,0 +1,51 @@
+Class Name,Class URI,Class Expression (OWL),Condition Type,English Definition
+BodyLotion,tps:BodyLotion,"Product
+ and (hasFormulation value Lotion)
+ and (isAppliedTo value Body)",Necessary and Sufficient,A Body Lotion is exactly a Product that has a Lotion formulation and is applied to the body.
+HandCare,tps:HandCare,"Product
+ and (isAppliedTo value Hands)",Necessary and Sufficient,Hand Care is exactly a Product that is applied to the hands.
+ShowerGel,tps:ShowerGel,"Product
+ and (hasFormulation value Gel)
+ and (hasPurpose value Cleansing)",Necessary and Sufficient,A Shower Gel is exactly a Product that has a Gel formulation and has a Cleansing purpose.
+SkinCareForHer,tps:SkinCareForHer,"Product
+ and (forAudience some (not (Male)))
+ and (hasFormulation value Lotion)
+ and (isAppliedTo value Body)",Necessary and Sufficient,"Skin Care For Her is exactly a Product for an audience that is not Male, has a Lotion formulation, and is applied to the body."
+SkinCareForHim,tps:SkinCareForHim,"Product
+ and (forAudience some (not (Female)))
+ and (hasFormulation value Lotion)
+ and (isAppliedTo value Body)",Necessary and Sufficient,"Skin Care For Him is exactly a Product for an audience that is not Female, has a Lotion formulation, and is applied to the body."
+Soap,tps:Soap,"Product
+ and (hasFormulation value SolidBar)
+ and (isAppliedTo value Body)",Necessary and Sufficient,A Soap is exactly a Product that has a Solid Bar formulation and is applied to the body.
+Cleanser,tps:Cleanser,"Product
+ and (hasPurpose value Cleansing)
+ and (isAppliedTo value Body)",Necessary and Sufficient,A Cleanser is exactly a Product that has a Cleansing purpose and is applied to the body.
+Moisturizer,tps:Moisturizer,"Product
+ and (hasPurpose value Moisturizing)
+ and (isAppliedTo value Face)",Necessary and Sufficient,A Moisturizer is exactly a Product that has a Moisturizing purpose and is applied to the face.
+Serum,tps:Serum,"Product
+ and (hasFormulation value Serum)
+ and (isAppliedTo value Face)",Necessary and Sufficient,A Serum is exactly a Product that has a Serum formulation and is applied to the face.
+Amber,tps:Amber,"Product
+ and (hasScentFamily value AmberFamily)",Necessary and Sufficient,An Amber fragrance is exactly a Product that has a scent from the Amber family.
+Floral,tps:Floral,"Product
+ and (hasScentFamily value FloralFamily)",Necessary and Sufficient,A Floral fragrance is exactly a Product that has a scent from the Floral family.
+Fresh,tps:Fresh,"Product
+ and (hasScentFamily value FreshFamily)",Necessary and Sufficient,A Fresh fragrance is exactly a Product that has a scent from the Fresh family.
+Fruity,tps:Fruity,"Product
+ and (hasScentFamily value FruityFamily)",Necessary and Sufficient,A Fruity fragrance is exactly a Product that has a scent from the Fruity family.
+Spicy,tps:Spicy,"Product
+ and (hasScentFamily value SpicyFamily)",Necessary and Sufficient,A Spicy fragrance is exactly a Product that has a scent from the Spicy family.
+Woody,tps:Woody,"Product
+ and (hasScentFamily value WoodyFamily)",Necessary and Sufficient,A Woody fragrance is exactly a Product that has a scent from the Woody family.
+Gifts for Her,tps:GiftsForHer,"Product and (hasGiftType some GiftsForHer) and (forAudience only Female)Product
+ and (forAudience only Female)
+ and (hasPurpose value Gift)",Necessary and Sufficient,Gifts for Her are exactly a Product intended exclusively for a Female audience and has the purpose of being a Gift.
+Gifts for Him,tps:GiftsForHim,"Product
+ and (forAudience only Male)
+ and (hasPurpose value Gift)",Necessary and Sufficient,Gifts for Him are exactly a Product intended exclusively for a Male audience and has the purpose of being a Gift.
+GiftsForKids,tps:GiftsForKids,"Product
+ and (forAudience some 
+    (Female or Male))
+ and (hasPurpose value Gift)",Necessary and Sufficient,Gifts For Kids are exactly a Product intended for an audience that is either Female or Male and has the purpose of being a Gift.

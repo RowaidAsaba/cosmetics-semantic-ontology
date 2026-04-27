@@ -1,0 +1,657 @@
+@prefix : <http://www.semanticweb.org/rowaidasaba/ontologies/2025/8/untitled-ontology-12/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/rowaidasaba/ontologies/2025/8/untitled-ontology-12/> .
+
+<http://www.semanticweb.org/rowaidasaba/ontologies/2025/8/untitled-ontology-12> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.example.org/ontologies/ont.owl#hasFormulation
+<http://www.example.org/ontologies/ont.owl#hasFormulation> rdf:type owl:ObjectProperty ;
+                                                           rdfs:domain <https://schema.org/Product> ;
+                                                           rdfs:range <http://www.example.org/ontologies/ont.owl#Formulation> .
+
+
+###  http://www.example.org/ontologies/ont.owl#hasPurpose
+<http://www.example.org/ontologies/ont.owl#hasPurpose> rdf:type owl:ObjectProperty ;
+                                                       rdfs:domain <https://schema.org/Product> ;
+                                                       rdfs:range <http://www.example.org/ontologies/ont.owl#ProductPurpose> .
+
+
+###  http://www.example.org/ontologies/ont.owl#hasScentFamily
+<http://www.example.org/ontologies/ont.owl#hasScentFamily> rdf:type owl:ObjectProperty ;
+                                                           rdfs:domain <https://schema.org/Product> ;
+                                                           rdfs:range <http://www.example.org/ontologies/ont.owl#ScentFamily> .
+
+
+###  http://www.example.org/ontologies/ont.owl#isAppliedTo
+<http://www.example.org/ontologies/ont.owl#isAppliedTo> rdf:type owl:ObjectProperty ;
+                                                        rdfs:domain <https://schema.org/Product> ;
+                                                        rdfs:range <http://www.example.org/ontologies/ont.owl#BodyPart> .
+
+
+###  https://www.theperfumeshop.com/ontology/forAudience
+<https://www.theperfumeshop.com/ontology/forAudience> rdf:type owl:ObjectProperty ;
+                                                      rdfs:domain <https://schema.org/Product> ;
+                                                      rdfs:range <https://schema.org/Audience> .
+
+
+###  https://www.theperfumeshop.com/ontology/hasBrand
+<https://www.theperfumeshop.com/ontology/hasBrand> rdf:type owl:ObjectProperty ;
+                                                   owl:inverseOf <https://www.theperfumeshop.com/ontology/isBrandOf> ;
+                                                   rdf:type owl:FunctionalProperty ;
+                                                   rdfs:domain <https://schema.org/Product> ;
+                                                   rdfs:range <https://schema.org/Brand> .
+
+
+###  https://www.theperfumeshop.com/ontology/hasCategory
+<https://www.theperfumeshop.com/ontology/hasCategory> rdf:type owl:ObjectProperty ;
+                                                      rdfs:domain <https://schema.org/Product> ;
+                                                      rdfs:range <https://www.theperfumeshop.com/ontology/Category> ;
+                                                      owl:propertyChainAxiom ( <https://www.theperfumeshop.com/ontology/hasCategory>
+                                                                               <https://www.theperfumeshop.com/ontology/hasSubcategory>
+                                                                             ) .
+
+
+###  https://www.theperfumeshop.com/ontology/hasFragranceFamily
+<https://www.theperfumeshop.com/ontology/hasFragranceFamily> rdf:type owl:ObjectProperty ;
+                                                             rdfs:subPropertyOf <https://www.theperfumeshop.com/ontology/hasCategory> ;
+                                                             rdfs:domain <https://schema.org/Product> ;
+                                                             rdfs:range <https://www.theperfumeshop.com/ontology/Fragrance> .
+
+
+###  https://www.theperfumeshop.com/ontology/hasGiftType
+<https://www.theperfumeshop.com/ontology/hasGiftType> rdf:type owl:ObjectProperty ;
+                                                      rdfs:subPropertyOf <https://www.theperfumeshop.com/ontology/hasCategory> ;
+                                                      rdfs:domain <https://schema.org/Product> ;
+                                                      rdfs:range <https://www.theperfumeshop.com/ontology/Gifts> .
+
+
+###  https://www.theperfumeshop.com/ontology/hasSubcategory
+<https://www.theperfumeshop.com/ontology/hasSubcategory> rdf:type owl:ObjectProperty ;
+                                                         rdfs:subPropertyOf <https://www.theperfumeshop.com/ontology/hasCategory> ;
+                                                         rdf:type owl:AsymmetricProperty ,
+                                                                  owl:TransitiveProperty ;
+                                                         rdfs:domain <https://www.theperfumeshop.com/ontology/Category> ;
+                                                         rdfs:range <https://www.theperfumeshop.com/ontology/Category> .
+
+
+###  https://www.theperfumeshop.com/ontology/isBrandOf
+<https://www.theperfumeshop.com/ontology/isBrandOf> rdf:type owl:ObjectProperty ;
+                                                    rdfs:domain <https://schema.org/Brand> ;
+                                                    rdfs:range <https://schema.org/Product> .
+
+
+###  https://www.theperfumeshop.com/ontology/isSimilarTo
+<https://www.theperfumeshop.com/ontology/isSimilarTo> rdf:type owl:ObjectProperty ,
+                                                               owl:SymmetricProperty ;
+                                                      rdfs:domain <https://schema.org/Product> ;
+                                                      rdfs:range <https://schema.org/Product> .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://schema.org/name
+<https://schema.org/name> rdf:type owl:DatatypeProperty ;
+                          rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  https://schema.org/price
+<https://schema.org/price> rdf:type owl:DatatypeProperty ;
+                           rdfs:domain <https://schema.org/Product> ;
+                           rdfs:range xsd:double .
+
+
+###  https://schema.org/size
+<https://schema.org/size> rdf:type owl:DatatypeProperty ;
+                          rdfs:domain <https://schema.org/Product> ;
+                          rdfs:range xsd:int .
+
+
+###  https://www.theperfumeshop.com/ontology/concentration
+<https://www.theperfumeshop.com/ontology/concentration> rdf:type owl:DatatypeProperty ;
+                                                        rdfs:domain <https://schema.org/Product> ;
+                                                        rdfs:range xsd:string .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://theperfumeshop.com/ontology/webshop.owl#BodyCare
+<http://theperfumeshop.com/ontology/webshop.owl#BodyCare> rdf:type owl:Class ;
+                                                          rdfs:subClassOf <https://www.theperfumeshop.com/ontology/FaceBody> .
+
+
+###  http://theperfumeshop.com/ontology/webshop.owl#BodyLotion
+<http://theperfumeshop.com/ontology/webshop.owl#BodyLotion> rdf:type owl:Class ;
+                                                            owl:equivalentClass [ owl:intersectionOf ( <https://schema.org/Product>
+                                                                                                       [ rdf:type owl:Restriction ;
+                                                                                                         owl:onProperty <http://www.example.org/ontologies/ont.owl#hasFormulation> ;
+                                                                                                         owl:hasValue <https://www.theperfumeshop.com/ontology/Lotion>
+                                                                                                       ]
+                                                                                                       [ rdf:type owl:Restriction ;
+                                                                                                         owl:onProperty <http://www.example.org/ontologies/ont.owl#isAppliedTo> ;
+                                                                                                         owl:hasValue <https://www.theperfumeshop.com/ontology/Body>
+                                                                                                       ]
+                                                                                                     ) ;
+                                                                                  rdf:type owl:Class
+                                                                                ] ;
+                                                            rdfs:subClassOf <http://theperfumeshop.com/ontology/webshop.owl#BodyCare> .
+
+
+###  http://theperfumeshop.com/ontology/webshop.owl#Cleanser
+<http://theperfumeshop.com/ontology/webshop.owl#Cleanser> rdf:type owl:Class ;
+                                                          owl:equivalentClass [ owl:intersectionOf ( <https://schema.org/Product>
+                                                                                                     [ rdf:type owl:Restriction ;
+                                                                                                       owl:onProperty <http://www.example.org/ontologies/ont.owl#hasPurpose> ;
+                                                                                                       owl:hasValue <http://www.example.org/ontologies/ont.owl#Cleansing>
+                                                                                                     ]
+                                                                                                     [ rdf:type owl:Restriction ;
+                                                                                                       owl:onProperty <http://www.example.org/ontologies/ont.owl#isAppliedTo> ;
+                                                                                                       owl:hasValue <https://www.theperfumeshop.com/ontology/Body>
+                                                                                                     ]
+                                                                                                   ) ;
+                                                                                rdf:type owl:Class
+                                                                              ] ;
+                                                          rdfs:subClassOf <http://theperfumeshop.com/ontology/webshop.owl#FaceCare> .
+
+
+###  http://theperfumeshop.com/ontology/webshop.owl#FaceCare
+<http://theperfumeshop.com/ontology/webshop.owl#FaceCare> rdf:type owl:Class ;
+                                                          rdfs:subClassOf <https://www.theperfumeshop.com/ontology/FaceBody> .
+
+
+###  http://theperfumeshop.com/ontology/webshop.owl#HandCare
+<http://theperfumeshop.com/ontology/webshop.owl#HandCare> rdf:type owl:Class ;
+                                                          owl:equivalentClass [ owl:intersectionOf ( <https://schema.org/Product>
+                                                                                                     [ rdf:type owl:Restriction ;
+                                                                                                       owl:onProperty <http://www.example.org/ontologies/ont.owl#isAppliedTo> ;
+                                                                                                       owl:hasValue <http://www.example.org/ontologies/ont.owl#Hands>
+                                                                                                     ]
+                                                                                                   ) ;
+                                                                                rdf:type owl:Class
+                                                                              ] ;
+                                                          rdfs:subClassOf <http://theperfumeshop.com/ontology/webshop.owl#BodyCare> .
+
+
+###  http://theperfumeshop.com/ontology/webshop.owl#Moisturizer
+<http://theperfumeshop.com/ontology/webshop.owl#Moisturizer> rdf:type owl:Class ;
+                                                             owl:equivalentClass [ owl:intersectionOf ( <https://schema.org/Product>
+                                                                                                        [ rdf:type owl:Restriction ;
+                                                                                                          owl:onProperty <http://www.example.org/ontologies/ont.owl#hasPurpose> ;
+                                                                                                          owl:hasValue <http://www.example.org/ontologies/ont.owl#Moisturizing>
+                                                                                                        ]
+                                                                                                        [ rdf:type owl:Restriction ;
+                                                                                                          owl:onProperty <http://www.example.org/ontologies/ont.owl#isAppliedTo> ;
+                                                                                                          owl:hasValue <http://www.example.org/ontologies/ont.owl#Face>
+                                                                                                        ]
+                                                                                                      ) ;
+                                                                                   rdf:type owl:Class
+                                                                                 ] ;
+                                                             rdfs:subClassOf <http://theperfumeshop.com/ontology/webshop.owl#FaceCare> .
+
+
+###  http://theperfumeshop.com/ontology/webshop.owl#Serum
+<http://theperfumeshop.com/ontology/webshop.owl#Serum> rdf:type owl:Class ;
+                                                       owl:equivalentClass [ owl:intersectionOf ( <https://schema.org/Product>
+                                                                                                  [ rdf:type owl:Restriction ;
+                                                                                                    owl:onProperty <http://www.example.org/ontologies/ont.owl#hasFormulation> ;
+                                                                                                    owl:hasValue <http://www.example.org/ontologies/ont.owl#Serum>
+                                                                                                  ]
+                                                                                                  [ rdf:type owl:Restriction ;
+                                                                                                    owl:onProperty <http://www.example.org/ontologies/ont.owl#isAppliedTo> ;
+                                                                                                    owl:hasValue <http://www.example.org/ontologies/ont.owl#Face>
+                                                                                                  ]
+                                                                                                ) ;
+                                                                             rdf:type owl:Class
+                                                                           ] ;
+                                                       rdfs:subClassOf <http://theperfumeshop.com/ontology/webshop.owl#FaceCare> .
+
+
+###  http://theperfumeshop.com/ontology/webshop.owl#ShowerGel
+<http://theperfumeshop.com/ontology/webshop.owl#ShowerGel> rdf:type owl:Class ;
+                                                           owl:equivalentClass [ owl:intersectionOf ( <https://schema.org/Product>
+                                                                                                      [ rdf:type owl:Restriction ;
+                                                                                                        owl:onProperty <http://www.example.org/ontologies/ont.owl#hasFormulation> ;
+                                                                                                        owl:hasValue <http://www.example.org/ontologies/ont.owl#Gel>
+                                                                                                      ]
+                                                                                                      [ rdf:type owl:Restriction ;
+                                                                                                        owl:onProperty <http://www.example.org/ontologies/ont.owl#hasPurpose> ;
+                                                                                                        owl:hasValue <http://www.example.org/ontologies/ont.owl#Cleansing>
+                                                                                                      ]
+                                                                                                    ) ;
+                                                                                 rdf:type owl:Class
+                                                                               ] ;
+                                                           rdfs:subClassOf <http://theperfumeshop.com/ontology/webshop.owl#BodyCare> .
+
+
+###  http://theperfumeshop.com/ontology/webshop.owl#SkinCareForHer
+<http://theperfumeshop.com/ontology/webshop.owl#SkinCareForHer> rdf:type owl:Class ;
+                                                                owl:equivalentClass [ owl:intersectionOf ( <https://schema.org/Product>
+                                                                                                           [ rdf:type owl:Restriction ;
+                                                                                                             owl:onProperty <https://www.theperfumeshop.com/ontology/forAudience> ;
+                                                                                                             owl:someValuesFrom [ rdf:type owl:Class ;
+                                                                                                                                  owl:complementOf <https://schema.org/Male>
+                                                                                                                                ]
+                                                                                                           ]
+                                                                                                           [ rdf:type owl:Restriction ;
+                                                                                                             owl:onProperty <http://www.example.org/ontologies/ont.owl#hasFormulation> ;
+                                                                                                             owl:hasValue <https://www.theperfumeshop.com/ontology/Lotion>
+                                                                                                           ]
+                                                                                                           [ rdf:type owl:Restriction ;
+                                                                                                             owl:onProperty <http://www.example.org/ontologies/ont.owl#isAppliedTo> ;
+                                                                                                             owl:hasValue <https://www.theperfumeshop.com/ontology/Body>
+                                                                                                           ]
+                                                                                                         ) ;
+                                                                                      rdf:type owl:Class
+                                                                                    ] ;
+                                                                rdfs:subClassOf <http://theperfumeshop.com/ontology/webshop.owl#BodyCare> .
+
+
+###  http://theperfumeshop.com/ontology/webshop.owl#SkinCareForHim
+<http://theperfumeshop.com/ontology/webshop.owl#SkinCareForHim> rdf:type owl:Class ;
+                                                                owl:equivalentClass [ owl:intersectionOf ( <https://schema.org/Product>
+                                                                                                           [ rdf:type owl:Restriction ;
+                                                                                                             owl:onProperty <https://www.theperfumeshop.com/ontology/forAudience> ;
+                                                                                                             owl:someValuesFrom [ rdf:type owl:Class ;
+                                                                                                                                  owl:complementOf <https://schema.org/Female>
+                                                                                                                                ]
+                                                                                                           ]
+                                                                                                           [ rdf:type owl:Restriction ;
+                                                                                                             owl:onProperty <http://www.example.org/ontologies/ont.owl#hasFormulation> ;
+                                                                                                             owl:hasValue <https://www.theperfumeshop.com/ontology/Lotion>
+                                                                                                           ]
+                                                                                                           [ rdf:type owl:Restriction ;
+                                                                                                             owl:onProperty <http://www.example.org/ontologies/ont.owl#isAppliedTo> ;
+                                                                                                             owl:hasValue <https://www.theperfumeshop.com/ontology/Body>
+                                                                                                           ]
+                                                                                                         ) ;
+                                                                                      rdf:type owl:Class
+                                                                                    ] ;
+                                                                rdfs:subClassOf <http://theperfumeshop.com/ontology/webshop.owl#BodyCare> .
+
+
+###  http://theperfumeshop.com/ontology/webshop.owl#Soap
+<http://theperfumeshop.com/ontology/webshop.owl#Soap> rdf:type owl:Class ;
+                                                      owl:equivalentClass [ owl:intersectionOf ( <https://schema.org/Product>
+                                                                                                 [ rdf:type owl:Restriction ;
+                                                                                                   owl:onProperty <http://www.example.org/ontologies/ont.owl#hasFormulation> ;
+                                                                                                   owl:hasValue <http://www.example.org/ontologies/ont.owl#SolidBar>
+                                                                                                 ]
+                                                                                                 [ rdf:type owl:Restriction ;
+                                                                                                   owl:onProperty <http://www.example.org/ontologies/ont.owl#isAppliedTo> ;
+                                                                                                   owl:hasValue <https://www.theperfumeshop.com/ontology/Body>
+                                                                                                 ]
+                                                                                               ) ;
+                                                                            rdf:type owl:Class
+                                                                          ] ;
+                                                      rdfs:subClassOf <http://theperfumeshop.com/ontology/webshop.owl#BodyCare> .
+
+
+###  http://www.example.org/ontologies/ont.owl#BodyPart
+<http://www.example.org/ontologies/ont.owl#BodyPart> rdf:type owl:Class .
+
+
+###  http://www.example.org/ontologies/ont.owl#Formulation
+<http://www.example.org/ontologies/ont.owl#Formulation> rdf:type owl:Class .
+
+
+###  http://www.example.org/ontologies/ont.owl#ProductPurpose
+<http://www.example.org/ontologies/ont.owl#ProductPurpose> rdf:type owl:Class .
+
+
+###  http://www.example.org/ontologies/ont.owl#ScentFamily
+<http://www.example.org/ontologies/ont.owl#ScentFamily> rdf:type owl:Class .
+
+
+###  https://schema.org/Audience
+<https://schema.org/Audience> rdf:type owl:Class .
+
+
+###  https://schema.org/Brand
+<https://schema.org/Brand> rdf:type owl:Class ;
+                           rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                             owl:onProperty <https://www.theperfumeshop.com/ontology/isBrandOf> ;
+                                             owl:someValuesFrom <https://schema.org/Product>
+                                           ] .
+
+
+###  https://schema.org/Female
+<https://schema.org/Female> rdf:type owl:Class ;
+                            rdfs:subClassOf <https://schema.org/Audience> ;
+                            owl:disjointWith <https://schema.org/Male> .
+
+
+###  https://schema.org/Male
+<https://schema.org/Male> rdf:type owl:Class ;
+                          rdfs:subClassOf <https://schema.org/Audience> .
+
+
+###  https://schema.org/Product
+<https://schema.org/Product> rdf:type owl:Class ;
+                             rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                               owl:onProperty <https://www.theperfumeshop.com/ontology/hasCategory> ;
+                                               owl:someValuesFrom <https://www.theperfumeshop.com/ontology/Category>
+                                             ] ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty <https://www.theperfumeshop.com/ontology/hasBrand> ;
+                                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                               owl:onClass <https://schema.org/Brand>
+                                             ] .
+
+
+###  https://www.theperfumeshop.com/ontology/Amber
+<https://www.theperfumeshop.com/ontology/Amber> rdf:type owl:Class ;
+                                                owl:equivalentClass [ owl:intersectionOf ( <https://schema.org/Product>
+                                                                                           [ rdf:type owl:Restriction ;
+                                                                                             owl:onProperty <http://www.example.org/ontologies/ont.owl#hasScentFamily> ;
+                                                                                             owl:hasValue <http://www.example.org/ontologies/ont.owl#AmberFamily>
+                                                                                           ]
+                                                                                         ) ;
+                                                                      rdf:type owl:Class
+                                                                    ] ;
+                                                rdfs:subClassOf <https://www.theperfumeshop.com/ontology/Fragrance> .
+
+
+###  https://www.theperfumeshop.com/ontology/Category
+<https://www.theperfumeshop.com/ontology/Category> rdf:type owl:Class ;
+                                                   rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty <https://www.theperfumeshop.com/ontology/hasSubcategory> ;
+                                                                     owl:someValuesFrom <https://www.theperfumeshop.com/ontology/Category>
+                                                                   ] .
+
+
+###  https://www.theperfumeshop.com/ontology/FaceBody
+<https://www.theperfumeshop.com/ontology/FaceBody> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.theperfumeshop.com/ontology/Category> .
+
+
+###  https://www.theperfumeshop.com/ontology/Floral
+<https://www.theperfumeshop.com/ontology/Floral> rdf:type owl:Class ;
+                                                 owl:equivalentClass [ owl:intersectionOf ( <https://schema.org/Product>
+                                                                                            [ rdf:type owl:Restriction ;
+                                                                                              owl:onProperty <http://www.example.org/ontologies/ont.owl#hasScentFamily> ;
+                                                                                              owl:hasValue <http://www.example.org/ontologies/ont.owl#FloralFamily>
+                                                                                            ]
+                                                                                          ) ;
+                                                                       rdf:type owl:Class
+                                                                     ] ;
+                                                 rdfs:subClassOf <https://www.theperfumeshop.com/ontology/Fragrance> .
+
+
+###  https://www.theperfumeshop.com/ontology/Fragrance
+<https://www.theperfumeshop.com/ontology/Fragrance> rdf:type owl:Class ;
+                                                    rdfs:subClassOf <https://www.theperfumeshop.com/ontology/Category> .
+
+
+###  https://www.theperfumeshop.com/ontology/Fresh
+<https://www.theperfumeshop.com/ontology/Fresh> rdf:type owl:Class ;
+                                                owl:equivalentClass [ owl:intersectionOf ( <https://schema.org/Product>
+                                                                                           [ rdf:type owl:Restriction ;
+                                                                                             owl:onProperty <http://www.example.org/ontologies/ont.owl#hasScentFamily> ;
+                                                                                             owl:hasValue <http://www.example.org/ontologies/ont.owl#FreshFamily>
+                                                                                           ]
+                                                                                         ) ;
+                                                                      rdf:type owl:Class
+                                                                    ] ;
+                                                rdfs:subClassOf <https://www.theperfumeshop.com/ontology/Fragrance> .
+
+
+###  https://www.theperfumeshop.com/ontology/Fruity
+<https://www.theperfumeshop.com/ontology/Fruity> rdf:type owl:Class ;
+                                                 owl:equivalentClass [ owl:intersectionOf ( <https://schema.org/Product>
+                                                                                            [ rdf:type owl:Restriction ;
+                                                                                              owl:onProperty <http://www.example.org/ontologies/ont.owl#hasScentFamily> ;
+                                                                                              owl:hasValue <http://www.example.org/ontologies/ont.owl#FruityFamily>
+                                                                                            ]
+                                                                                          ) ;
+                                                                       rdf:type owl:Class
+                                                                     ] ;
+                                                 rdfs:subClassOf <https://www.theperfumeshop.com/ontology/Fragrance> .
+
+
+###  https://www.theperfumeshop.com/ontology/Gifts
+<https://www.theperfumeshop.com/ontology/Gifts> rdf:type owl:Class ;
+                                                rdfs:subClassOf <https://www.theperfumeshop.com/ontology/Category> .
+
+
+###  https://www.theperfumeshop.com/ontology/GiftsForHer
+<https://www.theperfumeshop.com/ontology/GiftsForHer> rdf:type owl:Class ;
+                                                      owl:equivalentClass [ owl:intersectionOf ( <https://schema.org/Product>
+                                                                                                 [ rdf:type owl:Restriction ;
+                                                                                                   owl:onProperty <https://www.theperfumeshop.com/ontology/forAudience> ;
+                                                                                                   owl:allValuesFrom <https://schema.org/Female>
+                                                                                                 ]
+                                                                                                 [ rdf:type owl:Restriction ;
+                                                                                                   owl:onProperty <http://www.example.org/ontologies/ont.owl#hasPurpose> ;
+                                                                                                   owl:hasValue <https://www.example.org/ontologies/ont.owl#Gift>
+                                                                                                 ]
+                                                                                               ) ;
+                                                                            rdf:type owl:Class
+                                                                          ] ;
+                                                      rdfs:subClassOf <https://www.theperfumeshop.com/ontology/Gifts> .
+
+
+###  https://www.theperfumeshop.com/ontology/GiftsForHim
+<https://www.theperfumeshop.com/ontology/GiftsForHim> rdf:type owl:Class ;
+                                                      owl:equivalentClass [ owl:intersectionOf ( <https://schema.org/Product>
+                                                                                                 [ rdf:type owl:Restriction ;
+                                                                                                   owl:onProperty <https://www.theperfumeshop.com/ontology/forAudience> ;
+                                                                                                   owl:allValuesFrom <https://schema.org/Male>
+                                                                                                 ]
+                                                                                                 [ rdf:type owl:Restriction ;
+                                                                                                   owl:onProperty <http://www.example.org/ontologies/ont.owl#hasPurpose> ;
+                                                                                                   owl:hasValue <https://www.example.org/ontologies/ont.owl#Gift>
+                                                                                                 ]
+                                                                                               ) ;
+                                                                            rdf:type owl:Class
+                                                                          ] ;
+                                                      rdfs:subClassOf <https://www.theperfumeshop.com/ontology/Gifts> .
+
+
+###  https://www.theperfumeshop.com/ontology/GiftsForKids
+<https://www.theperfumeshop.com/ontology/GiftsForKids> rdf:type owl:Class ;
+                                                       owl:equivalentClass [ owl:intersectionOf ( <https://schema.org/Product>
+                                                                                                  [ rdf:type owl:Restriction ;
+                                                                                                    owl:onProperty <https://www.theperfumeshop.com/ontology/forAudience> ;
+                                                                                                    owl:someValuesFrom [ rdf:type owl:Class ;
+                                                                                                                         owl:unionOf ( <https://schema.org/Female>
+                                                                                                                                       <https://schema.org/Male>
+                                                                                                                                     )
+                                                                                                                       ]
+                                                                                                  ]
+                                                                                                  [ rdf:type owl:Restriction ;
+                                                                                                    owl:onProperty <http://www.example.org/ontologies/ont.owl#hasPurpose> ;
+                                                                                                    owl:hasValue <https://www.example.org/ontologies/ont.owl#Gift>
+                                                                                                  ]
+                                                                                                ) ;
+                                                                             rdf:type owl:Class
+                                                                           ] ;
+                                                       rdfs:subClassOf <https://www.theperfumeshop.com/ontology/Gifts> .
+
+
+###  https://www.theperfumeshop.com/ontology/NonUnisex
+<https://www.theperfumeshop.com/ontology/NonUnisex> rdf:type owl:Class ;
+                                                    rdfs:subClassOf [ owl:intersectionOf ( <https://schema.org/Product>
+                                                                                           [ rdf:type owl:Class ;
+                                                                                             owl:complementOf <https://www.theperfumeshop.com/ontology/Unisex>
+                                                                                           ]
+                                                                                         ) ;
+                                                                      rdf:type owl:Class
+                                                                    ] ;
+                                                    owl:disjointWith <https://www.theperfumeshop.com/ontology/Unisex> .
+
+
+###  https://www.theperfumeshop.com/ontology/Spicy
+<https://www.theperfumeshop.com/ontology/Spicy> rdf:type owl:Class ;
+                                                owl:equivalentClass [ owl:intersectionOf ( <https://schema.org/Product>
+                                                                                           [ rdf:type owl:Restriction ;
+                                                                                             owl:onProperty <http://www.example.org/ontologies/ont.owl#hasScentFamily> ;
+                                                                                             owl:hasValue <http://www.example.org/ontologies/ont.owl#SpicyFamily>
+                                                                                           ]
+                                                                                         ) ;
+                                                                      rdf:type owl:Class
+                                                                    ] ;
+                                                rdfs:subClassOf <https://www.theperfumeshop.com/ontology/Fragrance> .
+
+
+###  https://www.theperfumeshop.com/ontology/Unisex
+<https://www.theperfumeshop.com/ontology/Unisex> rdf:type owl:Class ;
+                                                 rdfs:subClassOf [ owl:intersectionOf ( <https://schema.org/Product>
+                                                                                        [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                                 owl:onProperty <https://www.theperfumeshop.com/ontology/forAudience> ;
+                                                                                                                 owl:someValuesFrom <https://schema.org/Female>
+                                                                                                               ]
+                                                                                                               [ rdf:type owl:Restriction ;
+                                                                                                                 owl:onProperty <https://www.theperfumeshop.com/ontology/forAudience> ;
+                                                                                                                 owl:someValuesFrom <https://schema.org/Male>
+                                                                                                               ]
+                                                                                                             ) ;
+                                                                                          rdf:type owl:Class
+                                                                                        ]
+                                                                                      ) ;
+                                                                   rdf:type owl:Class
+                                                                 ] .
+
+
+###  https://www.theperfumeshop.com/ontology/Woody
+<https://www.theperfumeshop.com/ontology/Woody> rdf:type owl:Class ;
+                                                owl:equivalentClass [ owl:intersectionOf ( <https://schema.org/Product>
+                                                                                           [ rdf:type owl:Restriction ;
+                                                                                             owl:onProperty <http://www.example.org/ontologies/ont.owl#hasScentFamily> ;
+                                                                                             owl:hasValue <http://www.example.org/ontologies/ont.owl#WoodyFamily>
+                                                                                           ]
+                                                                                         ) ;
+                                                                      rdf:type owl:Class
+                                                                    ] ;
+                                                rdfs:subClassOf <https://www.theperfumeshop.com/ontology/Fragrance> .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.example.org/ontologies/ont.owl#AmberFamily
+<http://www.example.org/ontologies/ont.owl#AmberFamily> rdf:type owl:NamedIndividual ,
+                                                                 <http://www.example.org/ontologies/ont.owl#ScentFamily> .
+
+
+###  http://www.example.org/ontologies/ont.owl#Cleansing
+<http://www.example.org/ontologies/ont.owl#Cleansing> rdf:type owl:NamedIndividual ,
+                                                               <http://www.example.org/ontologies/ont.owl#ProductPurpose> .
+
+
+###  http://www.example.org/ontologies/ont.owl#Cream
+<http://www.example.org/ontologies/ont.owl#Cream> rdf:type owl:NamedIndividual .
+
+
+###  http://www.example.org/ontologies/ont.owl#Face
+<http://www.example.org/ontologies/ont.owl#Face> rdf:type owl:NamedIndividual ,
+                                                          <http://www.example.org/ontologies/ont.owl#BodyPart> .
+
+
+###  http://www.example.org/ontologies/ont.owl#FloralFamily
+<http://www.example.org/ontologies/ont.owl#FloralFamily> rdf:type owl:NamedIndividual ,
+                                                                  <http://www.example.org/ontologies/ont.owl#ScentFamily> .
+
+
+###  http://www.example.org/ontologies/ont.owl#FreshFamily
+<http://www.example.org/ontologies/ont.owl#FreshFamily> rdf:type owl:NamedIndividual ,
+                                                                 <http://www.example.org/ontologies/ont.owl#ScentFamily> .
+
+
+###  http://www.example.org/ontologies/ont.owl#FruityFamily
+<http://www.example.org/ontologies/ont.owl#FruityFamily> rdf:type owl:NamedIndividual ,
+                                                                  <http://www.example.org/ontologies/ont.owl#ScentFamily> .
+
+
+###  http://www.example.org/ontologies/ont.owl#Gel
+<http://www.example.org/ontologies/ont.owl#Gel> rdf:type owl:NamedIndividual ,
+                                                         <http://www.example.org/ontologies/ont.owl#Formulation> .
+
+
+###  http://www.example.org/ontologies/ont.owl#Hands
+<http://www.example.org/ontologies/ont.owl#Hands> rdf:type owl:NamedIndividual ,
+                                                           <http://www.example.org/ontologies/ont.owl#BodyPart> .
+
+
+###  http://www.example.org/ontologies/ont.owl#Moisturizing
+<http://www.example.org/ontologies/ont.owl#Moisturizing> rdf:type owl:NamedIndividual ,
+                                                                  <http://www.example.org/ontologies/ont.owl#ProductPurpose> .
+
+
+###  http://www.example.org/ontologies/ont.owl#Serum
+<http://www.example.org/ontologies/ont.owl#Serum> rdf:type owl:NamedIndividual ,
+                                                           <http://www.example.org/ontologies/ont.owl#Formulation> .
+
+
+###  http://www.example.org/ontologies/ont.owl#SolidBar
+<http://www.example.org/ontologies/ont.owl#SolidBar> rdf:type owl:NamedIndividual ,
+                                                              <http://www.example.org/ontologies/ont.owl#Formulation> .
+
+
+###  http://www.example.org/ontologies/ont.owl#SpicyFamily
+<http://www.example.org/ontologies/ont.owl#SpicyFamily> rdf:type owl:NamedIndividual ,
+                                                                 <http://www.example.org/ontologies/ont.owl#ScentFamily> .
+
+
+###  http://www.example.org/ontologies/ont.owl#WoodyFamily
+<http://www.example.org/ontologies/ont.owl#WoodyFamily> rdf:type owl:NamedIndividual ,
+                                                                 <http://www.example.org/ontologies/ont.owl#ScentFamily> .
+
+
+###  https://www.example.org/ontologies/ont.owl#Gift
+<https://www.example.org/ontologies/ont.owl#Gift> rdf:type owl:NamedIndividual ,
+                                                           <http://www.example.org/ontologies/ont.owl#ProductPurpose> .
+
+
+###  https://www.theperfumeshop.com/ontology/Ali
+<https://www.theperfumeshop.com/ontology/Ali> rdf:type owl:NamedIndividual ,
+                                                       <https://schema.org/Product> ;
+                                              <http://www.example.org/ontologies/ont.owl#hasFormulation> <https://www.theperfumeshop.com/ontology/Lotion> ;
+                                              <http://www.example.org/ontologies/ont.owl#isAppliedTo> <https://www.theperfumeshop.com/ontology/Body> .
+
+
+###  https://www.theperfumeshop.com/ontology/Body
+<https://www.theperfumeshop.com/ontology/Body> rdf:type owl:NamedIndividual ,
+                                                        <http://www.example.org/ontologies/ont.owl#BodyPart> .
+
+
+###  https://www.theperfumeshop.com/ontology/Dior
+<https://www.theperfumeshop.com/ontology/Dior> rdf:type owl:NamedIndividual ,
+                                                        <https://schema.org/Brand> .
+
+
+###  https://www.theperfumeshop.com/ontology/Lotion
+<https://www.theperfumeshop.com/ontology/Lotion> rdf:type owl:NamedIndividual ,
+                                                          <http://www.example.org/ontologies/ont.owl#Formulation> .
+
+
+###  https://www.theperfumeshop.com/ontology/MissDior
+<https://www.theperfumeshop.com/ontology/MissDior> rdf:type owl:NamedIndividual ;
+                                                   <https://www.theperfumeshop.com/ontology/hasBrand> <https://www.theperfumeshop.com/ontology/Dior> ;
+                                                   <https://www.theperfumeshop.com/ontology/concentration> "Due te Perfume" .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( <https://www.theperfumeshop.com/ontology/GiftsForHer>
+                <https://www.theperfumeshop.com/ontology/GiftsForHim>
+                <https://www.theperfumeshop.com/ontology/GiftsForKids>
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
